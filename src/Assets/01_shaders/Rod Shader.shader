@@ -1,7 +1,7 @@
 ﻿Shader "Custom/Rod Shader" {
 	Properties {
 	_MainColor ("Main Color", Color) = (1, 1, 1, 1)
-	_MainTex ("", any) = "" {}
+	_MainTex ("", 2D) = "white" {}
     }
     
     SubShader {
@@ -35,16 +35,16 @@
 			
 			half4 c = tex2Dlod(_MainTex, v.texcoord);
 			
-			v.vertex = v.vertex + float4(0, c.g, 0, 0);
+			v.vertex = v.vertex + float4(0, c.g * 0.5, 0, 0);
 			
 			v.vertex = mul ( _World2Object, v.vertex );
 			v.vertex.xyz *= unity_Scale.w;
 			
 			float3 n = v.normal;
-			n.z = -abs(n.z) * c.g;
+			//n.z = -abs(n.z) * c.g;
 			n = normalize(n);
 			
-			v.vertex.xyz += n * c.g * 0.35;
+			v.vertex.xyz += n * c.g * 1.5;
 			
 			o.uv_MainTex = v.texcoord.xy;
 		}
