@@ -3,9 +3,9 @@ using System.Collections;
 
 public class BlobParticle : MonoBehaviour {
 
-	public KeyCode bobKey;
+	public KeyCode shrinkKey;
 	public float shrinkSpeed = 2;
-	public AnimationCurve bobCurve = AnimationCurve.Linear(0,0,1,1);
+	public AnimationCurve shrinkCurve = AnimationCurve.Linear(0,0,1,1);
 	float sizeRatio = 1;
 
 	ParticleSystem ps; 
@@ -16,7 +16,7 @@ public class BlobParticle : MonoBehaviour {
 		originalSize = ps.startSize;
 
 		sizeRatio = 1;
-		ps.startSize = bobCurve.Evaluate(sizeRatio) * originalSize;
+		ps.startSize = shrinkCurve.Evaluate(sizeRatio) * originalSize;
 	}
 	
 	// Update is called once per frame
@@ -24,8 +24,8 @@ public class BlobParticle : MonoBehaviour {
 
 		if(sizeRatio < 1)
 			sizeRatio += Time.deltaTime*shrinkSpeed;
-		if(Input.GetKey(bobKey))
+		if(Input.GetKey(shrinkKey))
 			sizeRatio = 0;
-		ps.startSize = bobCurve.Evaluate(sizeRatio) * originalSize;
+		ps.startSize = shrinkCurve.Evaluate(sizeRatio) * originalSize;
 	}
 }
