@@ -160,7 +160,7 @@ SkinnedMeshRenderer:
   m_RootBone: {fileID: 0}
   m_AABB:
     m_Center: {x: -1.9115163e-05, y: -.00323513243, z: .00458861981}
-    m_Extent: {x: .0016971149, y: .00682174228, z: .00460929982}
+    m_Extent: {x: .0016971149, y: .00682174228, z: .109999999}
   m_DirtyAABB: 0
 --- !u!1001 &100100000
 Prefab:
